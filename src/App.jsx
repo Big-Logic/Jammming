@@ -4,15 +4,20 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import AppContainer from "./components/AppContainer";
-import ConnectToSpotify from "./components/ConnectToSpotify";
-import Dashboard from "./components/Dashboard";
+
+//LAYOUTS
+import AppLayout from "./layouts/AppLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
+
+//FEATURES
+import ConnectToSpotify from "./features/ConnectToSpotify";
+import Recommendations from "./components/recommendations/Recommendations";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<AppContainer />}>
-      <Route path="/" element={<Dashboard />}>
-        <Route path="/" element={<p>Recommendations</p>} />
+    <Route path="/" element={<AppLayout />}>
+      <Route path="/" element={<DashboardLayout />}>
+        <Route path="/" element={<Recommendations />} />
         <Route path="playlists" element={<h1>Playlists</h1>} />
         <Route path="likedsongs" element={<h1>Liked Songs</h1>} />
       </Route>

@@ -1,5 +1,5 @@
-import SearchBar from "./SearchBar";
-import RenderView from "./RenderView";
+import SearchBar from "../components/SearchBar";
+import RenderView from "../components/RenderView";
 
 function RenderViewAndSearchBar() {
   return (

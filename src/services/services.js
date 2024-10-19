@@ -9,12 +9,13 @@ function generateRandomString(length) {
   return text;
 }
 
-async function requestHandler(
+async function requestHandler({
   params = "/",
   queryStr = "",
   requestMethod = "get",
-  requestBody
-) {
+  requestBody = undefined,
+  hasReturnValue = true,
+}) {
   const endPoint = "https://api.spotify.com/v1";
   const accessTokenDetail = JSON.parse(
     localStorage.getItem("accessTokenDetail")
@@ -28,8 +29,9 @@ async function requestHandler(
     method: requestMethod.toUpperCase(),
     body: JSON.stringify(requestBody),
   });
-
-  return await response.json();
+  if (hasReturnValue) {
+    return await response.json();
+  }
 }
 
 export const requestToken = async function () {
@@ -54,14 +56,21 @@ export const requestToken = async function () {
 };
 
 export async function getProfile() {
-  const data = await requestHandler("/me");
+  const data = await requestHandler({ params: "/me" });
   return data;
 }
 
 // PLAYLISTS
 
 export async function getMyPlaylists() {
-  const data = await requestHandler("/me/playlists");
+  const data = await requestHandler({ params: "/me/playlists" });
+  return data;
+}
+export async function getPlaylist(playlistId) {
+  const data = await requestHandler({
+    params: `/playlists/${playlistId}
+`,
+  });
   return data;
 }
 
@@ -69,15 +78,14 @@ export async function createPlaylist(playlistName) {
   //Get current user id
   const { id: userId } = await getProfile();
   //create playlist
-  const playlist = await requestHandler(
-    `/users/${userId}/playlists
-`,
-    "",
-    "post",
-    {
+  const playlist = await requestHandler({
+    params: `/users/${userId}/playlists`,
+    requestMethod: "post",
+    requestBody: {
       name: playlistName,
-    }
-  );
+    },
+  });
+  // destructure playlist items
   const {
     id,
     description,
@@ -87,6 +95,7 @@ export async function createPlaylist(playlistName) {
     tracks: { total: totalTracks },
     images,
   } = playlist;
+  //
   return {
     id,
     name,
@@ -98,6 +107,24 @@ export async function createPlaylist(playlistName) {
   };
 }
 
+export async function updatePlaylist(playlistId, newUpdate) {
+  await requestHandler({
+    params: `/playlists/${playlistId}`,
+    requestMethod: "put",
+    requestBody: newUpdate,
+    hasReturnValue: false,
+  });
+}
+
+export async function deletePlaylist(playlistId) {
+  //delete playlist
+  await requestHandler({
+    params: `/playlists/${playlistId}/followers`,
+    requestMethod: "delete",
+    hasReturnValue: false,
+  });
+}
+
 export async function getMySaveTracks() {
   const data = await requestHandler("/me/tracks");
   console.log(data);
@@ -105,7 +132,8 @@ export async function getMySaveTracks() {
 }
 
 export async function getTracksRecommendations() {
-  const data = await requestHandler("/recommendations");
+  const data = await requestHandler({ params: "/browse/categories" });
+
   console.log(data);
   return data;
 }

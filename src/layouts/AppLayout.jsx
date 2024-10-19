@@ -1,10 +1,16 @@
 import { Outlet } from "react-router-dom";
-import GlobalStyle from "../styles/globalsStyles";
-import { extractToken } from "../utils/extraToken";
-import PopupContextProvider from "../contexts/popupcontext";
-import Popup from "./Popup";
 
-function AppContainer() {
+// styles
+import GlobalStyle from "../styles/globalsStyles";
+
+// utils
+import { extractToken } from "../utils/extraToken";
+
+// components
+import PopupContextProvider from "../contexts/popupcontext";
+import Popup from "../components/popup/Popup";
+
+function AppLayout() {
   // Extract token and store it to local storage when a new one is generated
   extractToken();
 
@@ -20,4 +26,4 @@ function AppContainer() {
     </>
   );
 }
-export default AppContainer;
+export default AppLayout;

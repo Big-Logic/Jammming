@@ -1,13 +1,14 @@
 import { Navigate } from "react-router-dom";
-import { checkTokenAvailability } from "../utils/extraToken";
 import styled from "styled-components";
 
-// Components imports
-import Logo from "./Logo";
-import LikedSongs from "./LikedSongs";
-import Playlists from "./Playlists";
+// Utils
+import { checkTokenAvailability } from "../utils/extraToken";
+
+// Components
+import Logo from "../components/Logo";
+import LikedSongs from "../features/LikedSongs";
 import RenderViewAndSearchBar from "./RenderViewAndSearchBar";
-import { useEffect, useState } from "react";
+import Playlists from "../features/Playlists";
 
 // Styled components
 const Section = styled.section`
@@ -24,17 +25,9 @@ const Container = styled.div`
   padding: 2rem;
 `;
 
-function Dashboard() {
+function DashboardLayout() {
   return (
     <>
-      {/* <Section>
-        <Logo />
-        <Container>
-          <Playlists />
-          <RenderViewAndSearchBar />
-          <LikedSongs />
-        </Container>
-      </Section> */}
       {!checkTokenAvailability() && <Navigate to={"/connect"} />}
       {checkTokenAvailability() && (
         <Section>
@@ -49,4 +42,4 @@ function Dashboard() {
     </>
   );
 }
-export default Dashboard;
+export default DashboardLayout;

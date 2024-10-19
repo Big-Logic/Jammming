@@ -7,9 +7,9 @@ import { getMyPlaylists } from "../services/services";
 import { destructurePlaylists } from "../utils/destructureHandlers";
 
 //components
-import { DashboardSection } from "./reusable/dashboardReusable";
-import Playlist from "./Playlist";
-import PlaylistHeader from "./PlaylistHeader";
+import { DashboardSection } from "../components/reusable/dashboardReusable";
+import PlaylistHeader from "../components/playlists/PlaylistHeader";
+import Playlist from "../components/playlists/Playlist";
 
 function Playlists() {
   const [playlists, setPlaylists] = useState(null);
@@ -19,6 +19,17 @@ function Playlists() {
   function handleAddToPlaylist(item) {
     setPlaylists((prev) => {
       return [item, ...prev];
+    });
+  }
+
+  function handleDeletePlaylist(playlistId) {
+    setPlaylists((prev) => {
+      return prev.filter((item) => item.id !== playlistId);
+    });
+  }
+  function handleUpdatePlaylist(playlistId) {
+    setPlaylists((prev) => {
+      return prev.filter((item) => item.id !== playlistId);
     });
   }
 
@@ -49,7 +60,12 @@ function Playlists() {
       ) : (
         playlists &&
         playlists.map((playlist) => (
-          <Playlist key={playlist.id} playListObj={playlist} />
+          <Playlist
+            key={playlist.id}
+            playListObj={playlist}
+            handleDeletePlaylist={handleDeletePlaylist}
+            handleUpdatePlaylist={handleUpdatePlaylist}
+          />
         ))
       )}
     </DashboardSection>

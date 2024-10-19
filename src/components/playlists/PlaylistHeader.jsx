@@ -4,50 +4,50 @@ import styled from "styled-components";
 import { HiMiniPlus } from "react-icons/hi2";
 
 //hooks
-import usePopup from "../hooks/usePopup";
+import usePopup from "../../hooks/usePopup";
 
 //components
 import CreatePlaylist from "./CreatePlaylist";
 
-const PH = styled.header`
+const Header = styled.header`
   display: grid;
   grid-template-columns: 1fr 4rem;
   margin-bottom: 3rem;
   align-items: center;
 `;
 
-const PlaylistHeaderH2 = styled.h2`
+const H2 = styled.h2`
   font-size: 2rem;
 `;
 
-const PLHeaderButtonsContainer = styled.div`
+const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: right;
 `;
 
-const PLAddButton = styled.button`
+const AddButton = styled.button`
   font-size: 2.5rem;
 `;
 
 function PlaylistHeader({ addToPlaylist }) {
   const { handleShowPopup } = usePopup();
   return (
-    <PH>
+    <Header>
       <div>
-        <PlaylistHeaderH2>Your Playlists</PlaylistHeaderH2>
+        <H2>Your Playlists</H2>
       </div>
-      <PLHeaderButtonsContainer>
-        <PLAddButton
+      <ButtonsContainer>
+        <AddButton
           onClick={() =>
             handleShowPopup(<CreatePlaylist addToPlaylist={addToPlaylist} />)
           }
         >
           <HiMiniPlus />
-        </PLAddButton>
-      </PLHeaderButtonsContainer>
-    </PH>
+        </AddButton>
+      </ButtonsContainer>
+    </Header>
   );
 }
 export default PlaylistHeader;

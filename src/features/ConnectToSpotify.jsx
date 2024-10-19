@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import TokenRequestButton from "./TokenRequestButton";
-import Logo from "./Logo";
+import TokenRequestButton from "../components/TokenRequestButton";
+import Logo from "../components/Logo";
 
 // Styled Components
 

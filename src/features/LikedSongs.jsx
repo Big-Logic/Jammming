@@ -1,4 +1,4 @@
-import { DashboardSection } from "./reusable/dashboardReusable";
+import { DashboardSection } from "../components/reusable/dashboardReusable";
 
 function LikedSongs() {
   return (
