@@ -34,6 +34,15 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1.6rem;
     }
 
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
 `;
 
 export default GlobalStyle;

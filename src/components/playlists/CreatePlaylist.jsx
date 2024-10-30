@@ -5,7 +5,7 @@ import styled from "styled-components";
 import usePopup from "../../hooks/usePopup";
 
 // services
-import { createPlaylist } from "../../services/services";
+import { createPlaylist } from "../../services/playlists";
 
 const CreatePlaylistForm = styled.form`
   width: 80%;

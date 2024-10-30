@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TokenRequestButton from "../components/TokenRequestButton";
+import TokenRequestButton from "../components/connectToSpotify/TokenRequestButton";
 import Logo from "../components/Logo";
 
 // Styled Components

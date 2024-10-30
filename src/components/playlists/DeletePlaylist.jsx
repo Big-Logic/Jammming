@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { deletePlaylist } from "../../services/services";
+import { deletePlaylist } from "../../services/playlists";
 import usePopup from "../../hooks/usePopup";
 
 const DeletePlaylistContainer = styled.div``;

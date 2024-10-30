@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 //Services
-import { getMyPlaylists } from "../services/services";
+import { getMyPlaylists } from "../services/playlists";
 
 //utils
 import { destructurePlaylists } from "../utils/destructureHandlers";

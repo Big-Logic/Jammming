@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import usePopup from "../../hooks/usePopup";
 import { useState } from "react";
-import { updatePlaylist } from "../../services/services";
+import { updatePlaylist } from "../../services/playlists";
 
 const Form = styled.form`
   width: 80%;
