@@ -28,7 +28,7 @@ const Container = styled.div`
 function DashboardLayout() {
   return (
     <>
-      {!checkTokenAvailability() && <Navigate to={"/connect"} />}
+      {!checkTokenAvailability() && <Navigate to={"/connect"} replace={true} />}
       {checkTokenAvailability() && (
         <Section>
           <Logo />
