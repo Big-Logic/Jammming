@@ -5,7 +5,7 @@ import BackButton from "./BackButton";
 function RenderView() {
   return (
     <DashboardSection>
-      <BackButton />
+      {/* <BackButton /> */}
       <Outlet />
     </DashboardSection>
   );

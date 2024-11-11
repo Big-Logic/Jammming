@@ -16,6 +16,10 @@ import TracksRecommendationsPage from "./pages/TracksRecommendationsPage";
 import RecentlyplayedPage from "./pages/RecentlyPlayedPage";
 import RecommendedAlbumsPage from "./pages/RecommendedAlbumsPage";
 import NewAlbumReleasePage from "./pages/NewAlbumReleasePage";
+import PlaylistPage from "./pages/PlaylistPage";
+import ArtistPage from "./pages/ArtistPage";
+import TrackPage from "./pages/TrackPage";
+import AlbumPage from "./pages/AlbumPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -31,10 +35,10 @@ const router = createBrowserRouter(
         <Route path="recommended-albums" element={<RecommendedAlbumsPage />} />
         <Route path="recently-played" element={<RecentlyplayedPage />} />
         <Route path="new-album-releases" element={<NewAlbumReleasePage />} />
-        <Route path="playlists/:playlistId" element={<h1>Playlsit</h1>} />
-        <Route path="artists/:artistId" element={<h1>Artist</h1>} />
-        <Route path="tracks/:trackId" element={<h1>Artist</h1>} />
-        <Route path="albums/:albumId" element={<h1>Artist</h1>} />
+        <Route path="playlists/:playlistId" element={<PlaylistPage />} />
+        <Route path="artists/:artistId" element={<ArtistPage />} />
+        <Route path="tracks/:trackId" element={<TrackPage />} />
+        <Route path="albums/:albumId" element={<AlbumPage />} />
       </Route>
       <Route path="connect" element={<ConnectToSpotify />} />
       <Route path="*" element={<h1>There is nothing at this route</h1>} />

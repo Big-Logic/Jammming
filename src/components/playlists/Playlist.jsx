@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // Components
 import PlaylistContextMenu from "./PlaylistContextMenu";
+import { useNavigate } from "react-router-dom";
 
 const defaultImageUrl =
   "https://firebasestorage.googleapis.com/v0/b/odc-liberia.appspot.com/o/images%2Fmusic_default.png?alt=media&token=aee862c8-1dc2-4a2e-b0aa-5fd440d1aadd";
@@ -58,6 +59,8 @@ function Playlist({ playListObj, handleDeletePlaylist, handleUpdatePlaylist }) {
   const [showMenu, setShowMenu] = useState(false);
   const [mousePosition, setMousePosition] = useState(0);
 
+  const navigate = useNavigate();
+
   // Add or Remove mousedown event from the document
   const handleMouseDown = useCallback(() => {
     setShowMenu(false);
@@ -92,6 +95,7 @@ function Playlist({ playListObj, handleDeletePlaylist, handleUpdatePlaylist }) {
     <PlaylistContainer
       onContextMenu={handleContextMenu}
       id="playlist_container"
+      onClick={() => navigate(`/playlists/${playlist.id}`)}
     >
       <ImageContainer>
         <Image src={playlist.imageUrl || defaultImageUrl} />

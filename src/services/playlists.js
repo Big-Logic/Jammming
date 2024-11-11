@@ -63,3 +63,20 @@ export async function deletePlaylist(playlistId) {
     hasReturnValue: false,
   });
 }
+
+// PLAYLIST ITEMS
+export async function getPlaylistItems(playlistId) {
+  const {
+    id,
+    name,
+    images,
+    owner,
+    tracks: { items },
+  } = await requestHandler({
+    params: `/playlists/${playlistId}`,
+  });
+
+  console.log("hey");
+
+  return { id, name, images, owner, items };
+}
