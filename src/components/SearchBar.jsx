@@ -1,23 +1,22 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 // Icons
 import { HiHome, HiMagnifyingGlass } from "react-icons/hi2";
 
-const Section = styled.section``;
-
 const Container = styled.div`
   max-width: 600px;
-  /* background-color: blue; */
-  margin: 0 auto 2rem;
+  margin: 0 auto;
+  padding: 1rem 0 0 0;
   display: grid;
-  grid-template-columns: 6rem 1fr;
+  grid-template-columns: 5rem 1fr;
   gap: 1rem;
 `;
 
 const Form = styled.form`
   display: grid;
-  grid-template-columns: 1fr 6rem;
+  grid-template-columns: 1fr 5rem;
   background-color: #fff;
   border-radius: 100px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
@@ -25,7 +24,7 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
-  height: 6rem;
+  height: 5rem;
   border-radius: 50%;
   background-color: #1ed760;
   font-size: 2.5rem;
@@ -44,8 +43,10 @@ const Input = styled.input`
   }
 `;
 
-function SearchBar({ setSearchResults }) {
+function SearchBar() {
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
+
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(inputValue);
@@ -58,7 +59,7 @@ function SearchBar({ setSearchResults }) {
   return (
     <section>
       <Container>
-        <Button>
+        <Button onClick={() => navigate("/")}>
           <HiHome />
         </Button>
         <Form onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
-import AlbumsFeed from "../features/homeFeatures/AlbumsFeed";
-import NewReleasesFeed from "../features/homeFeatures/NewReleasesFeed";
-import RecentlyPlayedFeed from "../features/homeFeatures/RecentlyPlayedFeed";
-import TracksRecommendationsFeed from "../features/homeFeatures/TracksRecommendationsFeed";
+import TracksRecommendationsFeed from "../components/home/TracksRecommendationsFeed";
+import RecentlyPlayedFeed from "../components/home/RecentlyPlayedFeed";
+import NewReleasesFeed from "../components/home/NewReleasesFeed";
+import AlbumsFeed from "../components/home/AlbumsFeed";
 
 function Home() {
   return (

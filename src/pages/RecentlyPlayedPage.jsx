@@ -1,6 +1,6 @@
-import RecentlyPlayedFeatures from "../features/recentlyPlayFeatures/RecentlyPlayedFeatures";
+import RecentlyPlayed from "../components/recentlyPlayed/RecentlyPlayed";
 
 function RecentlyplayedPage() {
-  return <RecentlyPlayedFeatures />;
+  return <RecentlyPlayed />;
 }
 export default RecentlyplayedPage;

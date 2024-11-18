@@ -16,8 +16,9 @@ export async function getRecentlyPlayed() {
         name,
         album: { images },
         artists,
+        type,
       } = rp;
-      return { id, name, artists, images };
+      return { id, name, artists, images, type };
     });
 
   return mapRecentlyPlayed;

@@ -10,7 +10,7 @@ import AppLayout from "./layouts/AppLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 
 //PAGES
-import ConnectToSpotify from "./features/ConnectToSpotify";
+import ConnectToSpotify from "./pages/ConnectToSpotify";
 import Home from "./pages/Home";
 import TracksRecommendationsPage from "./pages/TracksRecommendationsPage";
 import RecentlyplayedPage from "./pages/RecentlyPlayedPage";
@@ -35,10 +35,10 @@ const router = createBrowserRouter(
         <Route path="recommended-albums" element={<RecommendedAlbumsPage />} />
         <Route path="recently-played" element={<RecentlyplayedPage />} />
         <Route path="new-album-releases" element={<NewAlbumReleasePage />} />
-        <Route path="playlists/:playlistId" element={<PlaylistPage />} />
-        <Route path="artists/:artistId" element={<ArtistPage />} />
-        <Route path="tracks/:trackId" element={<TrackPage />} />
-        <Route path="albums/:albumId" element={<AlbumPage />} />
+        <Route path="playlist/:playlistId" element={<PlaylistPage />} />
+        <Route path="artist/:artistId" element={<ArtistPage />} />
+        <Route path="track/:trackId" element={<TrackPage />} />
+        <Route path="album/:albumId" element={<AlbumPage />} />
       </Route>
       <Route path="connect" element={<ConnectToSpotify />} />
       <Route path="*" element={<h1>There is nothing at this route</h1>} />

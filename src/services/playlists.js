@@ -66,6 +66,7 @@ export async function deletePlaylist(playlistId) {
 
 // PLAYLIST ITEMS
 export async function getPlaylistItems(playlistId) {
+  // fetch playlist
   const {
     id,
     name,
@@ -76,7 +77,36 @@ export async function getPlaylistItems(playlistId) {
     params: `/playlists/${playlistId}`,
   });
 
-  console.log("hey");
+  // destructure playlist items
+  const mapTracks = items.map((item) => {
+    const {
+      id,
+      name,
+      artists,
+      duration_ms: durationMs,
+      album: { name: albumName, id: albumId, images: albumImages },
+    } = item.track;
+    return {
+      id,
+      name,
+      artists,
+      addedAt: item.added_at,
+      durationMs,
+      album: { albumId, albumName, albumImages },
+    };
+  });
 
-  return { id, name, images, owner, items };
+  // Calculate playlist duration
+  const durationMs = mapTracks
+    .map((track) => track.durationMs)
+    .reduce((pre, cur) => pre + cur, 0);
+
+  return {
+    id,
+    name,
+    imageUrl: images[0].url,
+    owner,
+    durationMs,
+    items: mapTracks,
+  };
 }

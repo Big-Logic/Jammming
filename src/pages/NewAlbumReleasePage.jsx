@@ -1,6 +1,6 @@
-import NewAlbumReleaseFeatures from "../features/newAlbumReleaseFeatures/NewAlbumReleaseFeatures";
+import NewAlbumReleases from "../components/newAlbumReleases/NewAlbumReleases";
 
 function NewAlbumReleasePage() {
-  return <NewAlbumReleaseFeatures />;
+  return <NewAlbumReleases />;
 }
 export default NewAlbumReleasePage;

@@ -1,6 +1,6 @@
-import RecomAlbumsFeatures from "../features/recomAlbumsFeatures/RecomAlbumsFeatures";
+import RecommendedAlbums from "../components/recommendedAlbums/RecommendedAlbums";
 
 function RecommendedAlbumsPage() {
-  return <RecomAlbumsFeatures />;
+  return <RecommendedAlbums />;
 }
 export default RecommendedAlbumsPage;

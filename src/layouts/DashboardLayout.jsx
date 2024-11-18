@@ -5,16 +5,17 @@ import styled from "styled-components";
 import { checkTokenAvailability } from "../utils/extraToken";
 
 // Components
-import Logo from "../components/Logo";
-import LikedSongs from "../features/LikedSongs";
-import RenderViewAndSearchBar from "./RenderViewAndSearchBar";
-import Playlists from "../features/Playlists";
+import Playlists from "../components/dashboard/Playlists";
+import LikedSongs from "../components/dashboard/LikedSongs";
+import SearchBar from "../components/SearchBar";
+import RenderView from "../components/dashboard/RenderView";
 
 // Styled components
 const Section = styled.section`
-  padding: 2rem 0;
   background-color: #f7f7f7;
-  min-height: 100vh;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
 `;
 
 const Container = styled.div`
@@ -22,7 +23,9 @@ const Container = styled.div`
   grid-template-columns: 20fr 60fr 20fr;
   width: 100%;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1rem;
+  align-items: start;
+  height: calc(100vh - 60px);
 `;
 
 function DashboardLayout() {
@@ -31,10 +34,10 @@ function DashboardLayout() {
       {!checkTokenAvailability() && <Navigate to={"/connect"} replace={true} />}
       {checkTokenAvailability() && (
         <Section>
-          <Logo />
+          <SearchBar />
           <Container>
             <Playlists />
-            <RenderViewAndSearchBar />
+            <RenderView />
             <LikedSongs />
           </Container>
         </Section>

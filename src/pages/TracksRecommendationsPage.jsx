@@ -1,6 +1,6 @@
-import TracksRecommendationsFeature from "../features/TracksRecomPageFeatures/TracksRecommendations";
+import TracksRecommendations from "../components/TracksRecommendations/TracksRecommendations";
 
 function TracksRecommendationsPage() {
-  return <TracksRecommendationsFeature />;
+  return <TracksRecommendations />;
 }
 export default TracksRecommendationsPage;

@@ -27,18 +27,20 @@ const SongTitle = styled.p`
 function FeedItem({ data }) {
   return (
     <Item>
-      <div>
-        <Img src={data.images[0].url} />
-      </div>
-      <div>
-        <SongTitle>{data.name}</SongTitle>
-        {data.artists.map((artist, i, arr) => (
-          <Link key={artist.id} to={`/artists/${artist.id}`}>
-            {artist.name}
-            {i < arr.length - 1 && ", "}
-          </Link>
-        ))}
-      </div>
+      <Link to={`/${data.type}/${data.id}`}>
+        <div>
+          <Img src={data.images[0].url} />
+        </div>
+        <div>
+          <SongTitle>{data.name}</SongTitle>
+          {data.artists.map((artist, i, arr) => (
+            <Link key={artist.id} to={`/artist/${artist.id}`}>
+              {artist.name}
+              {i < arr.length - 1 && ", "}
+            </Link>
+          ))}
+        </div>
+      </Link>
     </Item>
   );
 }

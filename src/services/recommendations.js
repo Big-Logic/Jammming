@@ -36,7 +36,8 @@ export async function getTracksRecommendations() {
       name,
       album: { images },
       artists,
+      type,
     } = rd;
-    return { id, name, artists, images };
+    return { id, name, artists, images, type };
   });
 }
