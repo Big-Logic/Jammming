@@ -1,3 +1,4 @@
+import destructureAlbumData from "../utils/destructureAlbumData";
 import requestHandler from "./requestHandler";
 import { getSaveTracks } from "./saveTracks";
 
@@ -25,37 +26,21 @@ export async function getRecommendatedAlbums() {
     });
 }
 
+//
 export async function getAlbum(albumId) {
   // fetch album
-  const {
-    id,
-    name,
-    artists,
-    images,
-    total_tracks: totalTracks,
-    release_date: releaseDate,
-    tracks: { items },
-  } = await requestHandler({ params: `/albums/${albumId}` });
+  const album = await requestHandler({ params: `/albums/${albumId}` });
 
-  // destructure album tracks
-  const mapTracks = items.map((item) => {
-    const { id, name, artists, duration_ms: durationMs } = item;
-    return { id, name, artists, durationMs };
+  return destructureAlbumData(album);
+}
+
+//
+export async function getArtistAlbum(artistId) {
+  const { items: albums } = await requestHandler({
+    params: `/artists/${artistId}/albums`,
+    queryStr: "?include_groups=album",
   });
+  const destructuredAlbums = albums.map((album) => destructureAlbumData(album));
 
-  // Calculate album duration
-  const durationMs = mapTracks
-    .map((track) => track.durationMs)
-    .reduce((pre, cur) => pre + cur, 0);
-
-  return {
-    id,
-    name,
-    artists,
-    imageUrl: images[0].url,
-    totalTracks,
-    releaseDate,
-    mapTracks,
-    durationMs,
-  };
+  return destructuredAlbums;
 }

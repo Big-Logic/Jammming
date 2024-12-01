@@ -104,9 +104,9 @@ export async function getPlaylistItems(playlistId) {
   return {
     id,
     name,
-    imageUrl: images[0].url,
+    imageUrl: images ? images[0].url : null,
     owner,
     durationMs,
-    items: mapTracks,
+    tracks: mapTracks,
   };
 }

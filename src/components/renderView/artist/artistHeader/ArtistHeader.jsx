@@ -9,14 +9,18 @@ import {
 } from "./../../../reusable/profileCard/CardHeaderItems";
 
 const cardCustomStyle = css`
-  min-height: 28rem;
+  min-height: 30rem;
   background-image: url(${(props) => props.$imageUrl});
-  background-position: right top;
+  background-position: center top;
   background-repeat: no-repeat;
+  background-size: auto cover;
+  background-attachment: fixed;
 `;
 
 function ArtistHeader({ data }) {
   const { name, imageUrl, totalFollowers } = data;
+
+  let formattedFollowers = totalFollowers.toLocaleString();
 
   return (
     <Card customStyle={cardCustomStyle} imageUrl={imageUrl}>
@@ -25,7 +29,7 @@ function ArtistHeader({ data }) {
         <CardHeaderTitle>{name}</CardHeaderTitle>
         <CardInfoFlex>
           <CardHeaderMiscellaneous>
-            {totalFollowers} followers
+            {formattedFollowers} followers
           </CardHeaderMiscellaneous>
         </CardInfoFlex>
       </CardHeaderDescription>

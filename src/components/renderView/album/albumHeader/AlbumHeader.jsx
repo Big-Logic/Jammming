@@ -7,8 +7,6 @@ import {
   CardHeaderType,
   CardHeaderTitle,
   CardInfoFlex,
-  CardHeaderUserFlex,
-  CardHeaderUserImage,
   CardHeaderUserName,
   CardHeaderMiscellaneous,
 } from "./../../../reusable/profileCard/CardHeaderItems";
@@ -27,9 +25,6 @@ function AlbumHeader({ data }) {
           <CardHeaderType>Album</CardHeaderType>
           <CardHeaderTitle>{name}</CardHeaderTitle>
           <CardInfoFlex>
-            {/* <CardHeaderUserFlex>
-              <CardHeaderUserImage src={"/m"} />
-            </CardHeaderUserFlex> */}
             <CardHeaderUserName>{artists[0].name}</CardHeaderUserName>
             <CardHeaderMiscellaneous>
               {new Date(releaseDate).getFullYear()}

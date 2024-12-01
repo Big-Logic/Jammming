@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useQueryClient } from "@tanstack/react-query";
 import { calculationDuration } from "../../../../utils/calculateDuration";
 import Card from "./../../../reusable/profileCard/Card";
@@ -22,7 +21,7 @@ function PlaylistHeader({ data }) {
   const {
     name,
     imageUrl,
-    items,
+    tracks,
     durationMs,
     owner: { display_name: displayName },
   } = data;
@@ -39,7 +38,7 @@ function PlaylistHeader({ data }) {
           <CardInfoFlex>
             <CardHeaderUserName>{displayName}</CardHeaderUserName>
             <CardHeaderMiscellaneous>
-              {items.length} Songs,
+              {tracks.length > 0 && tracks.length + "Songs,"}
             </CardHeaderMiscellaneous>
             <CardHeaderMiscellaneous>
               {Object.keys(playDuration).map((key) =>

@@ -28,7 +28,7 @@ function Feed({
   let sliceEnd = 0;
 
   if (data) {
-    sliceEnd = truncType == "few" ? 4 : truncType === "all" ? data.length : 0;
+    sliceEnd = truncType === "few" ? 4 : truncType === "all" ? data.length : 0;
   }
 
   if (isPending) {

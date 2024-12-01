@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+const defaultImageUrl =
+  "https://firebasestorage.googleapis.com/v0/b/odc-liberia.appspot.com/o/images%2Fmusic_default.png?alt=media&token=aee862c8-1dc2-4a2e-b0aa-5fd440d1aadd";
+
 const Hd = styled.header`
   display: grid;
   grid-template-columns: 20rem 1fr;
@@ -54,7 +57,7 @@ export function CardHeaderGrid({ children }) {
 export function CardHeaderImage({ src, alt }) {
   return (
     <div>
-      <Image src={src} alt={alt} />
+      <Image src={src || defaultImageUrl} alt={alt} />
     </div>
   );
 }

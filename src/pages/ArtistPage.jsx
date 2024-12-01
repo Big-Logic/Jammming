@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getArtist } from "../services/artist";
 import ArtistHeader from "../components/renderView/artist/artistHeader/ArtistHeader";
+import ArtistTopTracks from "../components/renderView/artist/artistTopTracks/ArtistTopTracks";
+import ArtistAlbums from "../components/renderView/artist/artistAlbums/ArtistAlbums";
+// import ArtistBgImage from "../components/renderView/artist/ArtistBgImage";
 
 function ArtistPage() {
   const { artistId } = useParams();
@@ -9,11 +12,9 @@ function ArtistPage() {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["artist"],
     queryFn: () => getArtist(artistId),
-    // refetchOnMount: true,
   });
 
   if (isPending) {
-    console.log("pending");
     return <p>Loading...</p>;
   }
 
@@ -21,7 +22,10 @@ function ArtistPage() {
     <>
       {data && (
         <>
+          {/* <ArtistBgImage data={data}></ArtistBgImage> */}
           <ArtistHeader data={data} />
+          <ArtistTopTracks artistId={artistId} />
+          <ArtistAlbums artistId={artistId} />
         </>
       )}
     </>

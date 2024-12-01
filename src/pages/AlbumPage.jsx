@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import AlbumHeader from "../components/renderView/album/albumHeader/AlbumHeader";
 import { useQuery } from "@tanstack/react-query";
 import { getAlbum } from "../services/album";
+import AlbumItems from "../components/renderView/album/albumItems/AlbumItems";
 
 function AlbumPage() {
   const { albumId } = useParams();
@@ -9,11 +10,9 @@ function AlbumPage() {
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["album"],
     queryFn: () => getAlbum(albumId),
-    // refetchOnMount: true,
   });
 
   if (isPending) {
-    console.log("pending");
     return <p>Loading...</p>;
   }
 
@@ -22,6 +21,7 @@ function AlbumPage() {
       {data && (
         <>
           <AlbumHeader data={data} />
+          <AlbumItems data={data} />
         </>
       )}
     </>
